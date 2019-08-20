@@ -12,7 +12,7 @@
 - momentjs
 - react-native-elements: Very convenient to build UI fast
 - react-native-vector-icons: Beutiful icons
-- ...
+- Hook and context also used to mange state and UI
 
 ## How to run
 ```
@@ -33,5 +33,8 @@ react-native run-android
 ## What to do next
 - [ ] Add more unitest
 - [ ] Add tags for todo (user able add CRUD tags)
-- [ ] Pin to top
+- [x] Pin to top
+- [x] memoize todo filter to improve performance
 - [ ] Able to filter todo by day
+- [ ] Multiple language
+- [ ] Able to change theme
