@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { View, StyleSheet, TextInput } from "react-native";
+import { View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import { Button, Text } from "react-native-elements";
 import { useNavigation } from "react-navigation-hooks";
+import Ionicons from "react-native-vector-icons/Ionicons";
 
 const TodoItem = ({ item, addTodo, updateItem }) => {
   const { pop } = useNavigation();
   const [todo, setTodo] = useState(item ? item.title : "");
+  const [pinned, setPinned] = useState(item ? item.isPinned : false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -24,6 +26,10 @@ const TodoItem = ({ item, addTodo, updateItem }) => {
     [setTodo]
   );
 
+  const onChangePinned = useCallback(() => {
+    setPinned((prev) => !prev);
+  }, [setPinned]);
+
   const onAddTodo = useCallback(() => {
     if (todo === "") {
       setError("Please enter your task!");
@@ -32,20 +38,34 @@ const TodoItem = ({ item, addTodo, updateItem }) => {
     }
 
     if (item) {
-      updateItem({ ...item, title: todo, updatedAt: Date.now() });
+      updateItem({
+        ...item,
+        title: todo,
+        updatedAt: Date.now(),
+        isPinned: pinned,
+      });
       setTodo("");
       setSuccess("Updated success!");
     } else {
-      addTodo({ title: todo });
+      addTodo({ title: todo, isPinned: pinned });
       setSuccess("Created success!");
     }
     pop();
-  }, [addTodo, todo, updateItem, item, pop]);
+  }, [addTodo, todo, updateItem, item, pop, pinned]);
 
   return (
     <View style={styles.container}>
       <View styles={styles.title}>
         <Text h4>Todo:</Text>
+        <View style={styles.pin}>
+          <TouchableOpacity onPress={onChangePinned}>
+            <Ionicons
+              size={30}
+              name="logo-pinterest"
+              color={pinned ? "#FF5A5F" : "black"}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
       <View style={styles.inputContainer}>
         <TextInput
@@ -86,7 +106,15 @@ const styles = StyleSheet.create({
     left: 20,
     right: 20,
   },
-  title: {},
+  title: {
+    flexDirection: "row",
+    position: "relative",
+  },
+  pin: {
+    position: "absolute",
+    top: 0,
+    right: 20,
+  },
   messageContainer: {
     marginTop: 20,
   },

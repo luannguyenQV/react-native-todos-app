@@ -37,25 +37,29 @@ const initialState = {
         _id: "1566235508136",
         title: "Complete Todo Application",
         updatedAt: 1566235508136,
-        isComplete: false, // NEW | DONE
+        isComplete: false,
+        isPinned: false,
       },
       {
         _id: "1566235508137",
         title: "Update UI for Todos",
         updatedAt: 1566235508136,
-        isComplete: false, // NEW | DONE
+        isComplete: false,
+        isPinned: true,
       },
       {
         _id: "1566235508138",
         title: "Add unit test for components",
         updatedAt: 1566235508136,
-        isComplete: false, // NEW | DONE
+        isComplete: false,
+        isPinned: false,
       },
       {
         _id: "1566235508139",
         title: "Add unit test for logics",
         updatedAt: 1566235508136,
-        isComplete: false, // NEW | DONE
+        isComplete: false,
+        isPinned: false,
       },
     ],
     filter: ALL,

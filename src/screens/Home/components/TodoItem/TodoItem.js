@@ -23,7 +23,11 @@ const TodoItem = ({ item, toggleTodo, deleteTodo }) => {
 
   return (
     <Swipe onDeleteItem={onDeleteItem} onEditItem={onEditItem}>
-      <View style={styles.container}>
+      <View
+        style={[
+          styles.container,
+          { backgroundColor: item.isPinned ? "#f7e1e1" : "#fff" },
+        ]}>
         <View style={styles.deleteContainer}>
           <TouchableOpacity onPress={onToggleTodo}>
             <Ionicons
@@ -51,6 +55,11 @@ const TodoItem = ({ item, toggleTodo, deleteTodo }) => {
             </Text>
           </TouchableOpacity>
         </View>
+        {item.isPinned && (
+          <View style={{ width: 30, marginRight: 10 }}>
+            <Ionicons size={30} name="logo-pinterest" color="#FF5A5F" />
+          </View>
+        )}
         <View style={{ width: 30 }}>
           <Ionicons size={30} name="ios-arrow-forward" color="#ccc" />
         </View>

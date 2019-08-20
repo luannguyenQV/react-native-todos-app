@@ -2,6 +2,8 @@ import { connect } from "react-redux";
 import TodoListComponent from "./TodoList";
 import { ALL, COMPLETED, ACTIVE } from "../../../../configs/filterType";
 
+const sortTodo = (a, b) => b.isPinned - a.isPinned;
+
 const mapStateToProps = (state) => {
   const todos = () => {
     const qRegex = new RegExp(
@@ -9,25 +11,27 @@ const mapStateToProps = (state) => {
       "i"
     );
 
-    return state.todos.todos.filter((item) => {
-      if (state.todos.filter === ALL) {
-        if (qRegex.test(item.title)) {
-          return true;
+    return state.todos.todos
+      .filter((item) => {
+        if (state.todos.filter === ALL) {
+          if (qRegex.test(item.title)) {
+            return true;
+          }
         }
-      }
-      if (state.todos.filter === COMPLETED) {
-        if (item.isComplete && qRegex.test(item.title)) {
-          return true;
+        if (state.todos.filter === COMPLETED) {
+          if (item.isComplete && qRegex.test(item.title)) {
+            return true;
+          }
         }
-      }
-      if (state.todos.filter === ACTIVE) {
-        if (!item.isComplete && qRegex.test(item.title)) {
-          return true;
+        if (state.todos.filter === ACTIVE) {
+          if (!item.isComplete && qRegex.test(item.title)) {
+            return true;
+          }
         }
-      }
 
-      return false;
-    });
+        return false;
+      })
+      .sort(sortTodo);
   };
 
   return {

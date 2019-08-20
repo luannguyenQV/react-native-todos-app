@@ -4,7 +4,7 @@ import { View, Text } from "react-native";
 const index = () => {
   return (
     <View>
-      <Text>About</Text>
+      <Text>INTRO PAGE</Text>
     </View>
   );
 };

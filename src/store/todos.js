@@ -12,6 +12,7 @@ const todos = (state = {}, action) => {
             title: action.payload.title,
             isComplete: false,
             updatedAt: Date.now(),
+            isPinned: action.payload.isPinned,
           },
         ],
       };

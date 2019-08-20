@@ -2,10 +2,10 @@ import React from "react";
 import { View } from "react-native";
 import { Text } from "react-native-elements";
 
-const index = ({ totalTodos }) => {
+const index = () => {
   return (
     <View>
-      <Text>{`Total: ${totalTodos}`}</Text>
+      <Text>TODO FILTER PAGE</Text>
     </View>
   );
 };
