@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
-import { TouchableOpacity } from "react-native";
-import { SafeAreaView } from "react-navigation";
+import { View, TouchableOpacity } from "react-native";
 import { Text, Header } from "react-native-elements";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useNavigation } from "react-navigation-hooks";
@@ -16,7 +15,7 @@ const AddTodoScreen = () => {
   const item = getParam("item", null);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <View style={{ flex: 1, paddingBottom: 50 }}>
       <Header
         leftComponent={
           <TouchableOpacity onPress={navigateToAddTodo}>
@@ -26,7 +25,7 @@ const AddTodoScreen = () => {
         centerComponent={<Text h4>ADD TODO</Text>}
       />
       <AddTodo item={item} />
-    </SafeAreaView>
+    </View>
   );
 };
 

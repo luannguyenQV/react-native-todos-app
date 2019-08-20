@@ -51,6 +51,9 @@ const TodoItem = ({ item, toggleTodo, deleteTodo }) => {
             </Text>
           </TouchableOpacity>
         </View>
+        <View style={{ width: 30 }}>
+          <Ionicons size={30} name="ios-arrow-forward" color="#ccc" />
+        </View>
       </View>
     </Swipe>
   );
