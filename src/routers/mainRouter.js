@@ -16,14 +16,13 @@ const HomeStack = createStackNavigator(
   {
     [SCREENS.HOME_SCREEN]: { screen: Screens.HomeScreen },
     [SCREENS.FILTER_SCREEN]: { screen: Screens.FilterScreen },
-    [SCREENS.ADD_TODO_SCREEN]: { screen: Screens.AddTodoScreen },
+    [SCREENS.ADD_TODO_SCREEN]: {
+      screen: Screens.AddTodoScreen,
+    },
   },
   {
     headerMode: "none",
     mode: "modal",
-    navigationOptions: {
-      gesturesEnabled: false,
-    },
     transitionConfig: () => ({
       transitionSpec: {
         duration: 300,
@@ -50,6 +49,13 @@ const HomeStack = createStackNavigator(
     }),
   }
 );
+
+HomeStack.navigationOptions = ({ navigation }) => {
+  return {
+    tabBarVisible: navigation.state.index === 0,
+    gesturesEnabled: false,
+  };
+};
 
 const AboutStack = createStackNavigator(
   {
