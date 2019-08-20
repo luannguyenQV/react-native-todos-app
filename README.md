@@ -1,7 +1,7 @@
 # react-native-todo-app
 
 
-This is my project help you manage your todo with React Native
+*react-native-todo-app* will help you manage your task - so simple and so beautiful.
 
 
 ## Technicals
