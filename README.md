@@ -31,7 +31,7 @@ react-native run-android
 ```
 
 ## What to do next
-- [] Add more unitest
-- [] Add tags for todo (user able add CRUD tags)
-- [] Pin to top
-- [] Able to filter todo by day
+- [ ] Add more unitest
+- [ ] Add tags for todo (user able add CRUD tags)
+- [ ] Pin to top
+- [ ] Able to filter todo by day
