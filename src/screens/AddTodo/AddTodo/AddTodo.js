@@ -1,5 +1,11 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+} from "react-native";
 import { Button, Text } from "react-native-elements";
 import { useNavigation } from "react-navigation-hooks";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -73,70 +79,75 @@ const TodoItem = ({ item, addTodo, updateItem, tags }) => {
   );
 
   return (
-    <View style={styles.container}>
-      <View styles={styles.title}>
-        <Text h4>Todo</Text>
-        <View style={styles.pin}>
-          <TouchableOpacity onPress={onChangePinned}>
-            <Ionicons
-              size={30}
-              name="logo-pinterest"
-              color={pinned ? "#FF5A5F" : "black"}
-            />
-          </TouchableOpacity>
+    <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding" enabled>
+      <View style={styles.container}>
+        <View styles={styles.title}>
+          <Text h4>Todo</Text>
+          <View style={styles.pin}>
+            <TouchableOpacity onPress={onChangePinned}>
+              <Ionicons
+                size={30}
+                name="logo-pinterest"
+                color={pinned ? "#FF5A5F" : "black"}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+        <View style={styles.inputContainer}>
+          <TextInput
+            ref={(element) => (textInput = element)}
+            placeholder="What you need to done?"
+            onChangeText={onChangeText}
+            value={todo}
+            style={styles.input}
+            multiline
+          />
+        </View>
+        <View style={[styles.title, { marginTop: 20, marginBottom: 20 }]}>
+          <Text h4>Tags</Text>
+        </View>
+        <View style={{ flexDirection: "row" }}>
+          {Object.keys(tags).map((t) => {
+            const isTagSelected = localTags.includes(t);
+            return (
+              <View
+                key={t}
+                style={{
+                  paddingLeft: 0,
+                  paddingRight: 10,
+                  flexDirection: "row",
+                }}>
+                <TouchableOpacity onPress={() => onToggleTag(t, isTagSelected)}>
+                  <Ionicons
+                    size={40}
+                    name={
+                      isTagSelected
+                        ? "ios-checkmark-circle"
+                        : "ios-checkmark-circle-outline"
+                    }
+                    color={tags[t].color}
+                  />
+                </TouchableOpacity>
+              </View>
+            );
+          })}
+        </View>
+        <View style={styles.messageContainer}>
+          <Text style={styles.error}>{error}</Text>
+        </View>
+        <View style={styles.messageContainer}>
+          <Text style={styles.success} h4>
+            {success}
+          </Text>
+        </View>
+        <View style={styles.button}>
+          <Button
+            title={item ? "UPDATE TODO" : "ADD TODO"}
+            onPress={onAddTodo}
+          />
         </View>
       </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          ref={(element) => (textInput = element)}
-          placeholder="What you need to done?"
-          onChangeText={onChangeText}
-          value={todo}
-          style={styles.input}
-          multiline
-        />
-      </View>
-      <View style={[styles.title, { marginTop: 20, marginBottom: 20 }]}>
-        <Text h4>Tags</Text>
-      </View>
-      <View style={{ flexDirection: "row" }}>
-        {Object.keys(tags).map((t) => {
-          const isTagSelected = localTags.includes(t);
-          return (
-            <View
-              key={t}
-              style={{
-                paddingLeft: 0,
-                paddingRight: 10,
-                flexDirection: "row",
-              }}>
-              <TouchableOpacity onPress={() => onToggleTag(t, isTagSelected)}>
-                <Ionicons
-                  size={40}
-                  name={
-                    isTagSelected
-                      ? "ios-checkmark-circle"
-                      : "ios-checkmark-circle-outline"
-                  }
-                  color={tags[t].color}
-                />
-              </TouchableOpacity>
-            </View>
-          );
-        })}
-      </View>
-      <View style={styles.messageContainer}>
-        <Text style={styles.error}>{error}</Text>
-      </View>
-      <View style={styles.messageContainer}>
-        <Text style={styles.success} h4>
-          {success}
-        </Text>
-      </View>
-      <View style={styles.button}>
-        <Button title={item ? "UPDATE TODO" : "ADD TODO"} onPress={onAddTodo} />
-      </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -150,7 +161,7 @@ const styles = StyleSheet.create({
   },
   button: {
     position: "absolute",
-    bottom: 0,
+    bottom: 20,
     width: "100%",
     left: 20,
     right: 20,

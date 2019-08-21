@@ -57,6 +57,7 @@ const TodoItem = ({ item, tags, toggleTodo, deleteTodo }) => {
           <View style={{ flexDirection: "row", marginTop: 10 }}>
             {item.tags.map((t) => (
               <View
+                key={t}
                 style={{
                   width: 30,
                   height: 6,

@@ -1,7 +1,6 @@
 import * as Actions from "../configs/actionTypes";
 
 const todos = (state = {}, action) => {
-  console.warn(action);
   switch (action.type) {
     case Actions.ADD_TODO:
       return {
