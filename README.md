@@ -31,6 +31,10 @@ react-native run-android
 ```
 
 ## What to do next
+- [x] Add/Remove/Edit Todo
+- [x] Filer todo by all/completed/active
+- [x] Search by title
+- [x] Mark all done/undone
 - [ ] Add more unitest
 - [ ] Add tags for todo (user able add CRUD tags)
 - [x] Pin to top
