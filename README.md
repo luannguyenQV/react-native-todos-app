@@ -14,6 +14,7 @@
 - react-native-vector-icons: Beutiful icons
 - Hook and context also used to mange state and UI
 
+
 ## How to run
 ```
 git clone https://github.com/luannguyenQV/react-native-todos-app.git
