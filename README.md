@@ -3,7 +3,6 @@
 
 **react-native-todo-app** will help you manage your task simply and beautifully.
 
-
 ## Technicals
 - React Native 0.59.9 
 - React Navigation for router
@@ -47,3 +46,9 @@ react-native run-android
 - [ ] Multiple language
 - [ ] Able to change theme
 - [ ] Add Realm database to store big data
+
+## Screenshots:
+
+![Home screen](https://github.com/luannguyenQV/react-native-todos-app/blob/master/screenshot/home.png)
+![Add todos](https://github.com/luannguyenQV/react-native-todos-app/blob/master/screenshot/add_todo.png)
+
