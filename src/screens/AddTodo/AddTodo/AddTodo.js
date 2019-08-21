@@ -4,12 +4,13 @@ import { Button, Text } from "react-native-elements";
 import { useNavigation } from "react-navigation-hooks";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-const TodoItem = ({ item, addTodo, updateItem }) => {
+const TodoItem = ({ item, addTodo, updateItem, tags }) => {
   const { pop } = useNavigation();
   const [todo, setTodo] = useState(item ? item.title : "");
   const [pinned, setPinned] = useState(item ? item.isPinned : false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [localTags, setLocalTags] = useState(item ? item.tags : []);
 
   let textInput = null;
 
@@ -43,20 +44,38 @@ const TodoItem = ({ item, addTodo, updateItem }) => {
         title: todo,
         updatedAt: Date.now(),
         isPinned: pinned,
+        tags: [...localTags],
       });
       setTodo("");
+      setLocalTags([]);
       setSuccess("Updated success!");
     } else {
-      addTodo({ title: todo, isPinned: pinned });
+      addTodo({
+        title: todo,
+        isPinned: pinned,
+        tags: [...localTags],
+      });
+      setLocalTags([]);
       setSuccess("Created success!");
     }
     pop();
-  }, [addTodo, todo, updateItem, item, pop, pinned]);
+  }, [addTodo, todo, updateItem, item, pop, pinned, localTags]);
+
+  const onToggleTag = useCallback(
+    (t, isExist) => {
+      if (isExist) {
+        setLocalTags([...localTags.filter((o) => o !== t)]);
+      } else {
+        setLocalTags([...localTags, t]);
+      }
+    },
+    [localTags, setLocalTags]
+  );
 
   return (
     <View style={styles.container}>
       <View styles={styles.title}>
-        <Text h4>Todo:</Text>
+        <Text h4>Todo</Text>
         <View style={styles.pin}>
           <TouchableOpacity onPress={onChangePinned}>
             <Ionicons
@@ -74,7 +93,37 @@ const TodoItem = ({ item, addTodo, updateItem }) => {
           onChangeText={onChangeText}
           value={todo}
           style={styles.input}
+          multiline
         />
+      </View>
+      <View style={[styles.title, { marginTop: 20, marginBottom: 20 }]}>
+        <Text h4>Tags</Text>
+      </View>
+      <View style={{ flexDirection: "row" }}>
+        {Object.keys(tags).map((t) => {
+          const isTagSelected = localTags.includes(t);
+          return (
+            <View
+              key={t}
+              style={{
+                paddingLeft: 0,
+                paddingRight: 10,
+                flexDirection: "row",
+              }}>
+              <TouchableOpacity onPress={() => onToggleTag(t, isTagSelected)}>
+                <Ionicons
+                  size={40}
+                  name={
+                    isTagSelected
+                      ? "ios-checkmark-circle"
+                      : "ios-checkmark-circle-outline"
+                  }
+                  color={tags[t].color}
+                />
+              </TouchableOpacity>
+            </View>
+          );
+        })}
       </View>
       <View style={styles.messageContainer}>
         <Text style={styles.error}>{error}</Text>

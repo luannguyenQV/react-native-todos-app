@@ -6,7 +6,7 @@ import { useNavigation } from "react-navigation-hooks";
 import Swipe from "./Swipte";
 import { timeFromNow } from "../../../../utils/dateTimeFormat";
 
-const TodoItem = ({ item, toggleTodo, deleteTodo }) => {
+const TodoItem = ({ item, tags, toggleTodo, deleteTodo }) => {
   const { navigate } = useNavigation();
 
   const onDeleteItem = useCallback(() => {
@@ -54,6 +54,19 @@ const TodoItem = ({ item, toggleTodo, deleteTodo }) => {
               {timeFromNow(item.updatedAt)}
             </Text>
           </TouchableOpacity>
+          <View style={{ flexDirection: "row", marginTop: 10 }}>
+            {item.tags.map((t) => (
+              <View
+                style={{
+                  width: 30,
+                  height: 6,
+                  borderRadius: 3,
+                  backgroundColor: tags[t].color,
+                  marginRight: 6,
+                }}
+              />
+            ))}
+          </View>
         </View>
         {item.isPinned && (
           <View style={{ width: 30, marginRight: 10 }}>

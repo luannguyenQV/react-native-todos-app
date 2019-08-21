@@ -6,6 +6,7 @@ import { addTodo, updateItem } from "../../../actions/index";
 const mapStateToProps = (state) => {
   return {
     search: state.todos.search,
+    tags: state.tags,
   };
 };
 

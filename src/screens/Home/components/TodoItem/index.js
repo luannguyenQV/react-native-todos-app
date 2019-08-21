@@ -3,8 +3,10 @@ import { bindActionCreators } from "redux";
 import TodoItem from "./TodoItem";
 import { toggleTodo, deleteTodo } from "../../../../actions/index";
 
-const mapStateToProps = () => {
-  return {};
+const mapStateToProps = (state) => {
+  return {
+    tags: state.tags,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

@@ -1,6 +1,7 @@
 import * as Actions from "../configs/actionTypes";
 
 const todos = (state = {}, action) => {
+  console.warn(action);
   switch (action.type) {
     case Actions.ADD_TODO:
       return {
@@ -13,6 +14,7 @@ const todos = (state = {}, action) => {
             isComplete: false,
             updatedAt: Date.now(),
             isPinned: action.payload.isPinned,
+            tags: action.payload.tags,
           },
         ],
       };
