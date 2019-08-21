@@ -38,7 +38,9 @@ react-native run-android
 - [x] Search by title
 - [x] Mark all done/undone
 - [ ] Add more unitest
-- [ ] Add tags for todo (user able add CRUD tags)
+- [x] User able add tags for todo
+- [ ] Able to create tags
+- [ ] Able filter by tags
 - [x] Pin to top
 - [x] memoize todo filter to improve performance
 - [ ] Able to filter todo by day
