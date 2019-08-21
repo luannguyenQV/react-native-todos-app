@@ -1,4 +1,4 @@
-# react-native-todo-app
+# React-Native-Todo-App
 
 
 **react-native-todo-app** will help you manage your task simply and beautifully.
@@ -49,6 +49,11 @@ react-native run-android
 
 ## Screenshots:
 
+[![Demo](https://img.youtube.com/vi/5A1Ina1-bvI/0.jpg)](https://www.youtube.com/watch?v=5A1Ina1-bvI)
+
+
+
 ![Home screen](https://github.com/luannguyenQV/react-native-todos-app/blob/master/screenshot/home.jpg)
 ![Add todos](https://github.com/luannguyenQV/react-native-todos-app/blob/master/screenshot/add_todo.jpg)
+
 
