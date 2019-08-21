@@ -49,6 +49,6 @@ react-native run-android
 
 ## Screenshots:
 
-![Home screen](https://github.com/luannguyenQV/react-native-todos-app/blob/master/screenshot/home.png)
-![Add todos](https://github.com/luannguyenQV/react-native-todos-app/blob/master/screenshot/add_todo.png)
+![Home screen](https://github.com/luannguyenQV/react-native-todos-app/blob/master/screenshot/home.jpg)
+![Add todos](https://github.com/luannguyenQV/react-native-todos-app/blob/master/screenshot/add_todo.jpg)
 
