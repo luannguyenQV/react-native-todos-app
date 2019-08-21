@@ -44,3 +44,4 @@ react-native run-android
 - [ ] Able to filter todo by day
 - [ ] Multiple language
 - [ ] Able to change theme
+- [ ] Add Realm database to store big data
