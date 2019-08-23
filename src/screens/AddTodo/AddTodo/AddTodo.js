@@ -9,6 +9,7 @@ import {
 import { Button, Text } from "react-native-elements";
 import { useNavigation } from "react-navigation-hooks";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import FontAweSome from "react-native-vector-icons/FontAwesome";
 
 const TodoItem = ({ item, addTodo, updateItem, tags }) => {
   const { pop } = useNavigation();
@@ -85,9 +86,9 @@ const TodoItem = ({ item, addTodo, updateItem, tags }) => {
           <Text h4>Todo</Text>
           <View style={styles.pin}>
             <TouchableOpacity onPress={onChangePinned}>
-              <Ionicons
+              <FontAweSome
                 size={30}
-                name="logo-pinterest"
+                name="thumb-tack"
                 color={pinned ? "#FF5A5F" : "black"}
               />
             </TouchableOpacity>
@@ -95,13 +96,17 @@ const TodoItem = ({ item, addTodo, updateItem, tags }) => {
         </View>
         <View style={styles.inputContainer}>
           <TextInput
+            multiline
+            maxLength={80}
+            placeholder="Todo now..."
             ref={(element) => (textInput = element)}
-            placeholder="What you need to done?"
             onChangeText={onChangeText}
             value={todo}
             style={styles.input}
-            multiline
           />
+          <View style={{ marginTop: 20 }}>
+            <Text>{`${80 - todo.length}/80`}</Text>
+          </View>
         </View>
         <View style={[styles.title, { marginTop: 20, marginBottom: 20 }]}>
           <Text h4>Tags</Text>

@@ -16,7 +16,7 @@ const Search = ({ search, onSearch }) => {
   return (
     <View style={{ paddingLeft: 20, paddingRight: 20 }}>
       <SearchBar
-        placeholder="Type Here..."
+        placeholder="Todo..."
         onChangeText={onChangeTextSearch}
         value={searchTerm}
       />

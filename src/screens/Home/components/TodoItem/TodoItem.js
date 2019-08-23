@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import { View, StyleSheet, TouchableOpacity } from "react-native";
 import { Text } from "react-native-elements";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import FontAweSome from "react-native-vector-icons/FontAwesome";
 import { useNavigation } from "react-navigation-hooks";
 import Swipe from "./Swipte";
 import { timeFromNow } from "../../../../utils/dateTimeFormat";
@@ -71,7 +72,7 @@ const TodoItem = ({ item, tags, toggleTodo, deleteTodo }) => {
         </View>
         {item.isPinned && (
           <View style={{ width: 30, marginRight: 10 }}>
-            <Ionicons size={30} name="logo-pinterest" color="#FF5A5F" />
+            <FontAweSome size={30} name="thumb-tack" color="#FF5A5F" />
           </View>
         )}
         <View style={{ width: 30 }}>
