@@ -49,7 +49,7 @@ react-native run-android
 
 ## Screenshots:
 
-VIDEO   
+VIDEO:   
 [![Demo](https://img.youtube.com/vi/5A1Ina1-bvI/0.jpg)](https://www.youtube.com/watch?v=5A1Ina1-bvI)
 
 SCREEN SHOTS:  
