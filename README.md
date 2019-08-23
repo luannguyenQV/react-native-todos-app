@@ -49,9 +49,10 @@ react-native run-android
 
 ## Screenshots:
 
+VIDEO
 [![Demo](https://img.youtube.com/vi/5A1Ina1-bvI/0.jpg)](https://www.youtube.com/watch?v=5A1Ina1-bvI)
 
-
+SCREEN SHOTS:
 
 ![Home screen](https://github.com/luannguyenQV/react-native-todos-app/blob/master/screenshot/home.jpg)
 ![Add todos](https://github.com/luannguyenQV/react-native-todos-app/blob/master/screenshot/add_todo.jpg)
